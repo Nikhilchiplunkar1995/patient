@@ -1,0 +1,37 @@
+<div>
+  <form [formGroup]="patientForm" (ngSubmit)="onSubmit()">
+    <div>
+      <label for="fullName">Full Name:</label>
+      <input id="fullName" formControlName="fullName">
+      <div *ngIf="patientForm.controls['fullName'].invalid && (patientForm.controls['fullName'].dirty || patientForm.controls['fullName'].touched)">
+        <div *ngIf="patientForm.controls['fullName'].errors?.['required']">
+          Full Name is required.
+        </div>
+      </div>
+    </div>
+    <div>
+      <label for="age">Age:</label>
+      <input id="age" formControlName="age">
+      <div *ngIf="patientForm.controls['age'].invalid && (patientForm.controls['age'].dirty || patientForm.controls['age'].touched)">
+        <div *ngIf="patientForm.controls['age'].errors?.['required']">
+          Age is required.
+        </div>
+        <div *ngIf="patientForm.controls['age'].errors?.['pattern']">
+          Age must be a number.
+        </div>
+      </div>
+    </div>
+    <div>
+      <label for="gender">Gender:</label>
+      <select id="gender" formControlName="gender">
+        <option value="Male">Male</option>
+        <option value="Female">Female</option>
+      </select>
+    </div>
+    <div>
+      <label for="conditionDescription">Condition Description:</label>
+      <textarea id="conditionDescription" formControlName="conditionDescription"></textarea>
+    </div>
+    <button type="submit" [disabled]="patientForm.invalid">Add Patient</button>
+  </form>
+</div>

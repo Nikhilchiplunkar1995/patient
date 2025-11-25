@@ -1,0 +1,25 @@
+<h2>Patients</h2>
+<table>
+  <thead>
+    <tr>
+      <th>Full Name</th>
+      <th>Age</th>
+      <th>Gender</th>
+      <th>Condition Description</th>
+      <th>Registration Date</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let patient of patients">
+      <td>{{ patient.fullName }}</td>
+      <td>{{ patient.age }}</td>
+      <td>{{ patient.gender }}</td>
+      <td>{{ patient.conditionDescription }}</td>
+      <td>{{ patient.registrationDate | date }}</td>
+      <td>
+        <button (click)="deletePatient(patient.id)">Delete</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
